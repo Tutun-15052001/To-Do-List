@@ -1,0 +1,131 @@
+body
+{
+  width: 75%;
+  margin: 0px auto;
+  background-image: url(../images/todo_image.jpeg);
+  background-attachment: fixed;
+}
+
+.heading
+{
+    text-align: center;
+    font-family: cursive;
+    text-decoration: underline;
+}
+
+fieldset
+{
+  border: 2px solid black;
+  font-weight: bold;
+}
+textarea
+{
+  width: 100%;
+  border-color: transparent;
+}
+textarea:active
+{
+  border-color: transparent;
+}
+
+.category_and_date
+{
+  display: flex;
+}
+
+.category_and_date fieldset 
+{
+  width: 100%;
+  border-top-color: transparent;
+  padding-left: 3.5%;
+}
+
+.category_and_date fieldset p select
+{
+  width: 95%;
+  border-color: transparent;
+}
+
+.category_and_date fieldset p input
+{
+  border-color: transparent;
+}
+
+body>button
+{
+  cursor: pointer;
+  min-width: 20%;
+  margin: 50px 0;
+  padding-top: 1.7%;
+  padding-bottom: 1.7%;
+  color: white;
+  border-color: transparent;
+}
+
+body>button:hover
+{
+  opacity: 0.8;
+}
+
+body>button:nth-child(odd)
+{
+  margin-left: 30%;
+  background-color: gray;
+}
+
+body>button:nth-child(even)
+{
+  background-color: red;
+}
+
+ul
+{
+    list-style: none;
+    padding: 0;
+}
+
+.single-todo
+{
+    display: flex; 
+    justify-content: space-between ;
+    /* margin-bottom: 35px; */
+    border: 2px solid black;
+    border-radius: 45px;
+    padding: 20px;
+}
+
+.task-and-date
+{
+  display: flex;
+  /* text-decoration: line-through; */
+}
+
+.task-and-date input
+{
+  cursor: pointer;
+  height:18px;
+  width:18px;
+  margin-right: 15px;
+}
+
+.task-and-date>div>div:nth-child(odd)
+{
+  font-size: larger;
+  font-style: italic;
+  font-weight: bold;
+  background-color: white;
+}
+
+.task-and-date>div>div:nth-child(even)
+{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: large;
+}
+
+.category-container
+{
+    width: 100px;
+    color: white;
+    border-color: transparent;
+    max-height: 42px;
+}

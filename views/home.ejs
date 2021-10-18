@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+    <title><%= title %></title>                      <!-- value of 'title' passed as key while returning from controller function that renders this page -->
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+
+<body>
+    <h1 class="heading"> TODO App </h1>                    <!-- Heading -->
+
+
+
+    <form action="/new-task" method="POST" id="add-task">  <!-- "/new-task" is overriden by a formaction attribute on <button id="add-task"></button> -->
+
+        <fieldset> DESCRIPTION 
+         <p>
+            <textarea name="task" id="task" placeholder="What do you need to do?" required></textarea>  <!-- user enters the task he/she is to do -->
+         </p>
+        </fieldset>
+ 
+
+        <div class="category_and_date">
+                <fieldset> CATEGORY
+                    <p>
+                        <select name="category" id="category" required>   <!-- user chooses a category for the task -->
+                            <option> Choose a Category </option>
+                            <option value="PERSONAL">PERSONAL</option>
+                            <option value="WORK">WORK</option>
+                            <option value="SCHOOL">SCHOOL</option>
+                            <option value="CLEANING">CLEANING</option>
+                            <option value="OTHER">OTHER</option>
+                        </select>
+                    </p>
+                </fieldset>
+
+                <fieldset> DUE DATE
+                    <p>
+                        <input type="date" name="due_date" id="due_date" required> <!-- users chooses the due-date for the task he entered -->
+                    </p>
+                </fieldset>
+        </div>
+
+        <!-- <button id="button-container" type="submit"> 
+            <i class="fas fa-plus"></i> ADD TASK 
+        </button> -->
+
+   <!-- <button> 
+                <a href="/delete-task/?id">
+                    <i class="fas fa-trash-alt"></i> DELETE TASKS 
+                </a>
+        </button> -->
+       
+    </form>
+
+
+<!--The form attribute of the <button> specifies which form[i.e., the form id] <button> belongs to. -->
+    <button form = "add-task" type="submit">  <!-- So,it performs the action of the form with id,"add-task"  -->
+        <i class="fas fa-plus"></i> ADD TASK 
+    </button>
+
+    <button form = "delete-task">             <!-- So,it performs the action of the form with id,"delete-task"  -->
+            <i class="fas fa-trash-alt"></i> DELETE TASKS 
+    </button>
+
+
+
+<form method="POST" action="/task-done" id="delete-task">  <!-- "/task-done" is overriden by a formaction attribute on <button id="delete-task"></button> -->
+
+    <div>
+        <ul>
+            <% for(let i=0; i<to_do_list.length; i++) { %>
+              <li>
+               <div class="single-todo">
+
+                    <div class="task-and-date">  
+                        <input type="checkbox" name="<%= to_do_list[i]._id %>">  <!-- The name attribute in <input> is used to name the keys of the data used to send -->
+                        <!-- A checkbox to be marked when the task is completed & the press button,"DELETE TASK" to remove that task from the To-Do List -->
+
+                        <div> <!-- displays task name & due-date -->
+                            <div>  <%= to_do_list[i].task %>  </div>
+                            <div>  <i class="far fa-calendar-alt"></i> <%= to_do_list[i].due_date %> </div> 
+                        </div> 
+                    </div>
+
+                    <button class="category-container"> <%= to_do_list[i].category %> </button>      <!-- A button displaying the category of that pending task -->
+
+               </div>
+
+              </li>     
+            <% } %>
+        </ul>
+    </div>
+
+</form>
+
+    <script src="https://kit.fontawesome.com/3a84fd23cb.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/home.js"></script>
+
+</body>
+
+
+</html>
